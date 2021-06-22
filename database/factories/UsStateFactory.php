@@ -21,8 +21,15 @@ class UsStateFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->unique()->words(3, true);
+        $abbr = $this->faker->unique('['.strtoupper($name).']{2}');
+
+        # Asumsi id state autoincrement
         return [
-            //
+            // 'state_id' => , // smallint NOT NULL,
+            'state_name' => $name, // character varying(100),
+            'state_abbr' => $abbr, // character varying(2),
+            'state_region' => substr($this->faker->region(), 0, 50), // character varying(50)
         ];
     }
 }

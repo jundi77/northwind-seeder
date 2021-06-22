@@ -21,8 +21,10 @@ class RegionFactory extends Factory
      */
     public function definition()
     {
+        # Asumsi id autoincrement
         return [
-            //
+            // 'region_id' => , // smallint NOT NULL,
+            'region_description' => $this->faker->unique()->word(), // bpchar NOT NULL
         ];
     }
 }

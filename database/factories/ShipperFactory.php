@@ -21,8 +21,11 @@ class ShipperFactory extends Factory
      */
     public function definition()
     {
+        # Asumsi shipper_id autoincrement
         return [
-            //
+            // 'shipper_id' => , // smallint NOT NULL,
+            'company_name' => substr($this->faker->company(), 0, 40), // character varying(40) NOT NULL,
+            'phone' => substr($this->faker->phoneNumber(), 0, 24), // character varying(24)
         ];
     }
 }

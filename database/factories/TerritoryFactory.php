@@ -21,8 +21,12 @@ class TerritoryFactory extends Factory
      */
     public function definition()
     {
+        # TODO
+        # Asumsi territory_id autoincrements
         return [
-            //
+            // 'territory_id' => , // character varying(20) NOT NULL,
+            // 'region_id' => , // smallint NOT NULL TODO
+            'territory_description' => $this->faker->text(150), // bpchar NOT NULL,
         ];
     }
 }
