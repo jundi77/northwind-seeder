@@ -3906,6 +3906,151 @@ ALTER TABLE ONLY employees
     ADD CONSTRAINT fk_employees_employees FOREIGN KEY (reports_to) REFERENCES employees;
 
     
+-- 
+-- Name: employee_id_seq; Type: Sequence; Schema: -; Owner: employees.employee_id
+-- 
+
+CREATE SEQUENCE  employee_id_seq
+    START 10
+    INCREMENT 1
+    OWNED BY employees.employee_id;
+
+
+-- 
+-- Name: product_id_seq; Type: Sequence; Schema: -; Owner: products.product_id
+-- 
+
+CREATE SEQUENCE  product_id_seq
+    START 78
+    INCREMENT 1
+    OWNED BY products.product_id;
+
+
+-- 
+-- Name: category_id_seq; Type: Sequence; Schema: -; Owner: categories.category_id
+-- 
+
+CREATE SEQUENCE  category_id_seq
+    START 9
+    INCREMENT 1
+    OWNED BY categories.category_id;
+
+-- select * from categories;
+-- drop sequence category_id_seq;
+
+-- 
+-- Name: order_id_seq; Type: Sequence; Schema: -; Owner: orders.order_id
+-- 
+
+CREATE SEQUENCE  order_id_seq
+    START 11078
+    INCREMENT 1
+    OWNED BY orders.order_id;
+
+
+-- 
+-- Name: region_id_seq; Type: Sequence; Schema: -; Owner: region.region_id
+-- 
+
+CREATE SEQUENCE  region_id_seq
+    START 5
+    INCREMENT 1
+    OWNED BY region.region_id;
+
+
+-- 
+-- Name: shipper_id_seq; Type: Sequence; Schema: -; Owner: shippers.shipper_id
+-- 
+
+CREATE SEQUENCE  shipper_id_seq
+    START 7
+    INCREMENT 1
+    OWNED BY shippers.shipper_id;
+
+
+-- 
+-- Name: supplier_id_seq; Type: Sequence; Schema: -; Owner: suppliers.supplier_id
+-- 
+
+CREATE SEQUENCE  supplier_id_seq
+    START 30
+    INCREMENT 1
+    OWNED BY suppliers.supplier_id;
+
+-- 
+-- Name: state_id_seq; Type: Sequence; Schema: -; Owner: us_states.state_id
+-- 
+
+CREATE SEQUENCE  state_id_seq
+	START 52
+	INCREMENT 1
+    OWNED BY us_states.state_id;
+
+
+-- 
+-- ALTER employee_id VALUE TO employee_id_seq
+-- 
+
+ALTER TABLE ONLY public.employees
+	ALTER COLUMN employee_id SET DEFAULT nextval('employee_id_seq');
+    
+
+-- 
+-- ALTER product_id VALUE TO product_id_seq
+-- 
+
+ALTER TABLE ONLY public.products
+	ALTER COLUMN product_id SET DEFAULT nextval('product_id_seq');
+
+
+-- 
+-- ALTER shipper_id VALUE TO shipper_id_seq
+-- 
+
+ALTER TABLE ONLY public.shippers
+	ALTER COLUMN shipper_id SET DEFAULT nextval('shipper_id_seq');
+
+
+-- 
+-- ALTER region_id VALUE TO region_id_seq
+-- 
+
+ALTER TABLE ONLY public.region
+	ALTER COLUMN region_id SET DEFAULT nextval('region_id_seq');
+
+
+-- 
+-- ALTER supplier_id VALUE TO supplier_id_seq
+-- 
+
+ALTER TABLE ONLY public.suppliers
+	ALTER COLUMN supplier_id SET DEFAULT nextval('supplier_id_seq');
+
+
+-- 
+-- ALTER state_id VALUE TO state_id_seq
+-- 
+
+ALTER TABLE ONLY public.us_states
+	ALTER COLUMN state_id SET DEFAULT nextval('state_id_seq');
+
+
+-- 
+-- ALTER order_id VALUE TO order_id_seq
+-- 
+
+ALTER TABLE ONLY public.orders
+	ALTER COLUMN order_id SET DEFAULT nextval('order_id_seq');
+
+
+-- 
+-- ALTER category_id VALUE TO category_id_seq
+-- 
+
+ALTER TABLE ONLY public.categories
+	ALTER COLUMN category_id SET DEFAULT nextval('category_id_seq');
+
+
 --
 -- PostgreSQL database dump complete
 --
