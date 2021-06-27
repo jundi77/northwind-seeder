@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Region;
 use App\Models\UsState;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,14 +23,14 @@ class UsStateFactory extends Factory
     public function definition()
     {
         $name = $this->faker->unique()->words(3, true);
-        $abbr = $this->faker->unique('['.strtoupper($name).']{2}');
+        $abbr = $this->faker->unique()->regexify('['.strtoupper($name).']{2}');
 
         # Asumsi id state autoincrement
         return [
             // 'state_id' => , // smallint NOT NULL,
             'state_name' => $name, // character varying(100),
             'state_abbr' => $abbr, // character varying(2),
-            'state_region' => substr($this->faker->region(), 0, 50), // character varying(50)
+            'state_region' => substr(Region::inRandomOrder()->first()->region_description, 0, 50), // character varying(50)
         ];
     }
 }

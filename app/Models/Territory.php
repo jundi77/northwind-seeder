@@ -10,4 +10,7 @@ class Territory extends Model
     use HasFactory;
 
     protected $primaryKey = 'territory_id';
+    public $incrementing = false;
+
+    public $timestamps = false;
 }

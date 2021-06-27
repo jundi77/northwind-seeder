@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
     {
         # assuming id autoincrement
         return [
-            'category_name' => $this->faker->words(2, true),
+            'category_name' => substr($this->faker->words(2, true), 15),
             'description' => $this->faker->text(150),
             'picture' => '\x',
         ];

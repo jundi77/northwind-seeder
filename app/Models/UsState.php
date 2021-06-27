@@ -10,4 +10,6 @@ class UsState extends Model
     use HasFactory;
 
     protected $primaryKey = 'state_id';
+
+    public $timestamps = false;
 }

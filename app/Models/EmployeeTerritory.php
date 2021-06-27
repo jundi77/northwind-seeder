@@ -13,4 +13,7 @@ class EmployeeTerritory extends Model
         'employee_id',
         'territory_id'
     ];
+
+    public $incrementing = false;
+    public $timestamps = false;
 }

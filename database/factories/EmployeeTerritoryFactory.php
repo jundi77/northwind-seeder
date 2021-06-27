@@ -25,7 +25,7 @@ class EmployeeTerritoryFactory extends Factory
     {
         return [
             'employee_id' => Employee::inRandomOrder()->first()->employee_id,
-            'territory_id' => Territory::inRandomOrder()->first()->territory_id,
+            'territory_id' => ''.Territory::inRandomOrder()->first()->territory_id,
         ];
     }
 }

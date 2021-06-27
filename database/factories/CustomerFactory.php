@@ -33,7 +33,7 @@ class CustomerFactory extends Factory
             'postal_code' => $this->faker->randomNumber(6, true),// character varying(10),
             'country' => substr($this->faker->country(), 0, 15),// character varying(15),
             'phone' => substr($this->faker->phoneNumber(), 0, 24),// character varying(24),
-            'fax' => substr($this->faker->faxNumber(), 0, 24),// character varying(24)
+            'fax' => substr($this->faker->phoneNumber(), 0, 24),// character varying(24)
         ];
     }
 }

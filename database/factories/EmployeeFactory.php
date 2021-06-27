@@ -21,13 +21,14 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
-        $name = explode('', $this->faker->name(), 2);
+        $firstName = $this->faker->firstNameMale();
+        $lastName = $this->faker->lastName();
 
         # asumsi id autoincrement
         return [
             // 'employee_id' => , // smallint NOT NULL,
-            'last_name' => $name[1], // character varying(20) NOT NULL,
-            'first_name' => $name[0], // character varying(10) NOT NULL,
+            'last_name' => $lastName, // character varying(20) NOT NULL,
+            'first_name' => $firstName, // character varying(10) NOT NULL,
             'title' => substr($this->faker->jobTitle(), 0, 30), // character varying(30),
             'title_of_courtesy' => $this->faker->title(), // character varying(25),
             'birth_date' => $this->faker->dateTimeThisCentury()->format('Y-m-d'), // date,

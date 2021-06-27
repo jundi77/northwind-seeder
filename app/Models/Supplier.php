@@ -10,4 +10,6 @@ class Supplier extends Model
     use HasFactory;
 
     protected $primaryKey = 'supplier_id';
+
+    public $timestamps = false;
 }

@@ -13,4 +13,7 @@ class OrderDetail extends Model
         'order_id',
         'product_id',
     ];
+
+    public $incrementing = false;
+    public $timestamps = false;
 }

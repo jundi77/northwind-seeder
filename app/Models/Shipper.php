@@ -10,4 +10,6 @@ class Shipper extends Model
     use HasFactory;
 
     protected $primaryKey = 'shipper_id';
+
+    public $timestamps = false;
 }
