@@ -108,7 +108,7 @@ CREATE TABLE employees (
     extension character varying(4),
     photo bytea,
     notes text,
-    reports_to smallint,
+    reports_to integer,
     photo_path character varying(255)
 );
 
@@ -149,7 +149,7 @@ CREATE TABLE orders (
     order_date date,
     required_date date,
     shipped_date date,
-    ship_via smallint,
+    ship_via integer,
     freight real,
     ship_name character varying(40),
     ship_address character varying(60),
@@ -227,7 +227,7 @@ CREATE TABLE suppliers (
 CREATE TABLE territories (
     territory_id character varying(20) NOT NULL,
     territory_description bpchar NOT NULL,
-    region_id smallint NOT NULL
+    region_id integer NOT NULL
 );
 
 
