@@ -41,7 +41,7 @@ DROP TABLE IF EXISTS employees;
 --
 
 CREATE TABLE categories (
-    category_id smallint NOT NULL,
+    category_id serial NOT NULL,
     category_name character varying(15) NOT NULL,
     description text,
     picture bytea
@@ -92,7 +92,7 @@ CREATE TABLE customers (
 --
 
 CREATE TABLE employees (
-    employee_id smallint NOT NULL,
+    employee_id serial NOT NULL,
     last_name character varying(20) NOT NULL,
     first_name character varying(10) NOT NULL,
     title character varying(30),
@@ -118,7 +118,7 @@ CREATE TABLE employees (
 --
 
 CREATE TABLE employee_territories (
-    employee_id smallint NOT NULL,
+    employee_id serial NOT NULL,
     territory_id character varying(20) NOT NULL
 );
 
@@ -130,8 +130,8 @@ CREATE TABLE employee_territories (
 --
 
 CREATE TABLE order_details (
-    order_id smallint NOT NULL,
-    product_id smallint NOT NULL,
+    order_id serial NOT NULL,
+    product_id integer NOT NULL,
     unit_price real NOT NULL,
     quantity smallint NOT NULL,
     discount real NOT NULL
@@ -143,9 +143,9 @@ CREATE TABLE order_details (
 --
 
 CREATE TABLE orders (
-    order_id smallint NOT NULL,
+    order_id serial NOT NULL,
     customer_id bpchar,
-    employee_id smallint,
+    employee_id integer,
     order_date date,
     required_date date,
     shipped_date date,
@@ -165,10 +165,10 @@ CREATE TABLE orders (
 --
 
 CREATE TABLE products (
-    product_id smallint NOT NULL,
+    product_id serial NOT NULL,
     product_name character varying(40) NOT NULL,
-    supplier_id smallint,
-    category_id smallint,
+    supplier_id integer,
+    category_id integer,
     quantity_per_unit character varying(20),
     unit_price real,
     units_in_stock smallint,
@@ -183,7 +183,7 @@ CREATE TABLE products (
 --
 
 CREATE TABLE region (
-    region_id smallint NOT NULL,
+    region_id serial NOT NULL,
     region_description bpchar NOT NULL
 );
 
@@ -193,7 +193,7 @@ CREATE TABLE region (
 --
 
 CREATE TABLE shippers (
-    shipper_id smallint NOT NULL,
+    shipper_id serial NOT NULL,
     company_name character varying(40) NOT NULL,
     phone character varying(24)
 );
@@ -205,7 +205,7 @@ CREATE TABLE shippers (
 --
 
 CREATE TABLE suppliers (
-    supplier_id smallint NOT NULL,
+    supplier_id serial NOT NULL,
     company_name character varying(40) NOT NULL,
     contact_name character varying(30),
     contact_title character varying(30),
@@ -236,7 +236,7 @@ CREATE TABLE territories (
 --
 
 CREATE TABLE us_states (
-    state_id smallint NOT NULL,
+    state_id serial NOT NULL,
     state_name character varying(100),
     state_abbr character varying(2),
     state_region character varying(50)
@@ -3912,7 +3912,6 @@ ALTER TABLE ONLY employees
 
 CREATE SEQUENCE  employee_id_seq
     START 10
-    INCREMENT 1
     OWNED BY employees.employee_id;
 
 
@@ -3922,7 +3921,6 @@ CREATE SEQUENCE  employee_id_seq
 
 CREATE SEQUENCE  product_id_seq
     START 78
-    INCREMENT 1
     OWNED BY products.product_id;
 
 
@@ -3932,7 +3930,6 @@ CREATE SEQUENCE  product_id_seq
 
 CREATE SEQUENCE  category_id_seq
     START 9
-    INCREMENT 1
     OWNED BY categories.category_id;
 
 -- select * from categories;
@@ -3944,7 +3941,6 @@ CREATE SEQUENCE  category_id_seq
 
 CREATE SEQUENCE  order_id_seq
     START 11078
-    INCREMENT 1
     OWNED BY orders.order_id;
 
 
@@ -3954,7 +3950,6 @@ CREATE SEQUENCE  order_id_seq
 
 CREATE SEQUENCE  region_id_seq
     START 5
-    INCREMENT 1
     OWNED BY region.region_id;
 
 
@@ -3964,7 +3959,6 @@ CREATE SEQUENCE  region_id_seq
 
 CREATE SEQUENCE  shipper_id_seq
     START 7
-    INCREMENT 1
     OWNED BY shippers.shipper_id;
 
 
@@ -3974,7 +3968,6 @@ CREATE SEQUENCE  shipper_id_seq
 
 CREATE SEQUENCE  supplier_id_seq
     START 30
-    INCREMENT 1
     OWNED BY suppliers.supplier_id;
 
 -- 
@@ -3983,7 +3976,6 @@ CREATE SEQUENCE  supplier_id_seq
 
 CREATE SEQUENCE  state_id_seq
 	START 52
-	INCREMENT 1
     OWNED BY us_states.state_id;
 
 
