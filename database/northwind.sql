@@ -118,7 +118,7 @@ CREATE TABLE employees (
 --
 
 CREATE TABLE employee_territories (
-    employee_id serial NOT NULL,
+    employee_id integer NOT NULL,
     territory_id character varying(20) NOT NULL
 );
 
@@ -130,7 +130,7 @@ CREATE TABLE employee_territories (
 --
 
 CREATE TABLE order_details (
-    order_id serial NOT NULL,
+    order_id integer NOT NULL,
     product_id integer NOT NULL,
     unit_price real NOT NULL,
     quantity smallint NOT NULL,
@@ -3520,22 +3520,22 @@ INSERT INTO products VALUES (DEFAULT,'Original Frankfurter grüne Soße', 12, 2,
 -- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO region VALUES ('Eastern');
-INSERT INTO region VALUES ('Western');
-INSERT INTO region VALUES ('Northern');
-INSERT INTO region VALUES ('Southern');
+INSERT INTO region VALUES (DEFAULT,'Eastern');
+INSERT INTO region VALUES (DEFAULT,'Western');
+INSERT INTO region VALUES (DEFAULT,'Northern');
+INSERT INTO region VALUES (DEFAULT,'Southern');
 
 
 --
 -- Data for Name: shippers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO shippers VALUES ('Speedy Express', '(503) 555-9831');
-INSERT INTO shippers VALUES ('United Package', '(503) 555-3199');
-INSERT INTO shippers VALUES ('Federal Shipping', '(503) 555-9931');
-INSERT INTO shippers VALUES ('Alliance Shippers', '1-800-222-0451');
-INSERT INTO shippers VALUES ('UPS', '1-800-782-7892');
-INSERT INTO shippers VALUES ('DHL', '1-800-225-5345');
+INSERT INTO shippers VALUES (DEFAULT,'Speedy Express', '(503) 555-9831');
+INSERT INTO shippers VALUES (DEFAULT,'United Package', '(503) 555-3199');
+INSERT INTO shippers VALUES (DEFAULT,'Federal Shipping', '(503) 555-9931');
+INSERT INTO shippers VALUES (DEFAULT,'Alliance Shippers', '1-800-222-0451');
+INSERT INTO shippers VALUES (DEFAULT,'UPS', '1-800-782-7892');
+INSERT INTO shippers VALUES (DEFAULT,'DHL', '1-800-225-5345');
 
 
 
