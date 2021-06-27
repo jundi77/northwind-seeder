@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -21,7 +23,6 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        #TODO
         $stock = $this->faker->numberBetween(6, 666);
         $order = $this->faker->numberBetween(0, $stock);
 
@@ -29,8 +30,8 @@ class ProductFactory extends Factory
         return [
             // 'product_id' => , // smallint NOT NULL,
             'product_name' => substr($this->faker->words(3, true), 40), // character varying(40) NOT NULL,
-            // 'supplier_id' => , // smallint, TODO
-            // 'category_id' => , // smallint, TODO
+            'supplier_id' => Supplier::inRandomOrder()->first()->supplier_id, // smallint, TODO
+            'category_id' => Category::inRandomOrder()->first()->category_id, // smallint, TODO
             'quantity_per_unit' => $this->faker->bothify('## ??s - ## ??s'), // character varying(20),
             'unit_price' => $this->faker->randomFloat(5, 1, 100), // real,
             'units_in_stock' => $stock, // smallint,

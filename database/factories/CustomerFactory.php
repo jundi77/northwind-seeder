@@ -28,7 +28,7 @@ class CustomerFactory extends Factory
             'contact_name' => substr($this->faker->name(), 0, 30),// character varying(30),
             'contact_title' => substr($this->faker->name(), 0, 30),// character varying(30),
             'address' => substr($this->faker->address(), 0, 60),// character varying(60),
-            'city' => substr($this->faker->address(), 0, 15),// character varying(15),
+            'city' => substr($this->faker->city(), 0, 15),// character varying(15),
             'region' => NULL,// character varying(15),
             'postal_code' => $this->faker->randomNumber(6, true),// character varying(10),
             'country' => substr($this->faker->country(), 0, 15),// character varying(15),

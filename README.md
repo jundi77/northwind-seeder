@@ -1,31 +1,3 @@
-# INGFO TABEL
-
-categories [bisa] [seed]
-
-suppliers  [bisa] [seed]
-- products [bisa] [half]
-
-customer demographics [kosong] [bisa]
-
-customers [bisa] [seed]
-- customer_dmeo [kosong] [bisa]
-
-shippers [bisa] [seed]
-
-employees [bisa] [seed]
-
-territories [bisa] [half]
-
-region [bisa] [seed]
-- employee_territories [bisa]
-
-us_states [bisa] [seed]
-
-order_details
-
-orders
-
-
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

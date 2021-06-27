@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use App\Models\EmployeeTerritory;
+use App\Models\Territory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeTerritoryFactory extends Factory
@@ -22,7 +24,8 @@ class EmployeeTerritoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'employee_id' => Employee::inRandomOrder()->first()->employee_id,
+            'territory_id' => Territory::inRandomOrder()->first()->territory_id,
         ];
     }
 }
