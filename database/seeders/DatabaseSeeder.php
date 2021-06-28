@@ -27,11 +27,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $max = 100;
-        $maxAll = 4000000;
-        $increments = $maxAll /$max;
+        $maxAll = 2000;
 
-        $jobs = [];
-        for (; $max < $maxAll; $max+=$increments) { 
+        $jobs = [
+            function() {
+                # loop sendiri karena kena limit kombinasi 2 abjad
+                for ($i=0; $i < 300; $i++) { 
+                    UsState::factory(1)->create();
+                }
+            }
+        ];
+
+        for ($i=0; $i < $maxAll/100; $i++) { 
             array_push($jobs, function() use($max) {Category::factory($max)->create();});
             array_push($jobs, function() use($max) {Supplier::factory($max)->create();});
             array_push($jobs, function() use($max) {Product::factory($max)->create();});
@@ -41,21 +48,39 @@ class DatabaseSeeder extends Seeder
             array_push($jobs, function() use($max) {Territory::factory($max)->create();});
             array_push($jobs, function() use($max) {Employee::factory($max)->create();});
             array_push($jobs, function() use($max) {EmployeeTerritory::factory($max)->create();});
-            array_push($jobs, function() use($max) {
-                for ($i=0; $i < $max; $i++) { 
-                    UsState::factory(1)->create();
-                }
-            });
-            array_push($jobs,function() use($max) {Order::factory($max)->create();});
-            array_push($jobs,function() use($max) {
-                for ($i=0; $i < $max; $i++) { 
-                    OrderDetail::factory(1)->create();
-                }
-            });
         }
 
-        $Fork = Fork::new()->concurrent(80);
+        for ($i=0; $i < 1000500 / $max; $i++) { 
+            array_push($jobs,function() use($max) {Order::factory($max)->create();});
+        }
 
+        $Fork = Fork::new()->concurrent(5);
         call_user_func_array([$Fork, "run"], $jobs);
+
+        echo "Getting order...";
+        $maxOrder = Order::count();
+        echo ''.$maxOrder."\n";
+
+        echo "Getting product...";
+        $maxProduct = Product::count();
+        $products = Product::select('unit_price')->get();
+        echo ''.$maxProduct."\n";
+
+        for ($i = 1; $i <= $maxOrder; ++$i) {
+            echo 'Inserting for order '.$i."\n";
+			$product = rand() % $maxProduct + 1;
+            try {
+                OrderDetail::insert([
+                        'order_id' => $i,
+                        'product_id' => $product,
+                        'unit_price' => $products[$product]->unit_price,
+                        'quantity' => 1,
+                        'discount' => 0,
+                ]);
+            } catch (\Throwable $th) {
+	    		echo "Insert for order ".$i." fail\n";
+            }
+			echo "Insert for order ".$i." done\n";
+        }
     }
 }
